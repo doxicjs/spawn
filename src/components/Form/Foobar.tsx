@@ -1,6 +1,17 @@
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Button } from '../ui/button'
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from '@/components/ui/form'
+import { Input } from '../ui/input'
 
 const FormSchema = z.object({
   foo: z.literal('bar')
@@ -9,28 +20,43 @@ const FormSchema = z.object({
 type TFormSchema = z.infer<typeof FormSchema>
 
 export default function FoobarForm() {
-  const {
-    register,
-    formState: { isDirty, isSubmitSuccessful },
-    handleSubmit
-  } = useForm<TFormSchema>({
+  const form = useForm<TFormSchema>({
+    defaultValues: {
+      foo: ''
+    },
     resolver: zodResolver(FormSchema)
   })
   return (
-    <form
-      onSubmit={handleSubmit((data) => {
-        console.log(data)
-      })}
-      className="flex w-full max-w-xs flex-col gap-2"
-    >
-      <input
-        {...register('foo')}
-        placeholder="bar"
-        disabled={isSubmitSuccessful}
-      />
-      <button type="submit" disabled={!isDirty || isSubmitSuccessful}>
-        {isSubmitSuccessful ? 'Success' : 'Submit'}
-      </button>
-    </form>
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit((data) => {
+          console.log(data)
+        })}
+        className="space-y-8"
+      >
+        <FormField
+          control={form.control}
+          name="foo"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Foo</FormLabel>
+              <FormControl>
+                <Input placeholder="bar" {...field} />
+              </FormControl>
+              <FormDescription>Hello world!</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button
+          type="submit"
+          disabled={
+            !form.formState.isDirty || form.formState.isSubmitSuccessful
+          }
+        >
+          {form.formState.isSubmitSuccessful ? 'Success' : 'Submit'}
+        </Button>
+      </form>
+    </Form>
   )
 }

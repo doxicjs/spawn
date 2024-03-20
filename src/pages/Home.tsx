@@ -1,5 +1,6 @@
 import { useExampleStore } from '@/shared/stores/example'
 import FoobarForm from '@/components/Form/Foobar'
+import { Button } from '@/components/ui/button'
 
 export default function Home() {
   const { count, increment, decrement } = useExampleStore()
@@ -9,8 +10,8 @@ export default function Home() {
       <h1 className="text-4xl font-medium">Doxic Spawn</h1>
       <span className="text-4xl font-medium">{count}</span>
       <div className="flex w-full max-w-max gap-2">
-        <button onClick={increment}>Increment</button>
-        <button onClick={decrement}>Decrement</button>
+        <Button onClick={increment}>Increment</Button>
+        <Button onClick={decrement}>Decrement</Button>
       </div>
 
       <FoobarForm />

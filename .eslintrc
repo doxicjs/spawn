@@ -26,7 +26,8 @@
     "es2020": true
   },
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": [2, { "ignore": ["className"] }]
   },
   "settings": {
     "react": {
