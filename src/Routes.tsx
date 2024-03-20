@@ -13,7 +13,7 @@ const Routes: RouteObject[] = [
             path: '/',
 
             lazy: async () => {
-              const { default: Component } = await import('pages/Home')
+              const { default: Component } = await import('@/pages/Home')
               return {
                 Component
               }

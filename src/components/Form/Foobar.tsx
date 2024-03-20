@@ -1,4 +1,3 @@
-import { Button, TextField } from 'lib'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,7 +11,7 @@ type TFormSchema = z.infer<typeof FormSchema>
 export default function FoobarForm() {
   const {
     register,
-    formState: { errors, isDirty, isSubmitSuccessful },
+    formState: { isDirty, isSubmitSuccessful },
     handleSubmit
   } = useForm<TFormSchema>({
     resolver: zodResolver(FormSchema)
@@ -24,24 +23,14 @@ export default function FoobarForm() {
       })}
       className="flex w-full max-w-xs flex-col gap-2"
     >
-      <TextField
-        label="Foo"
-        error={errors.foo?.message}
-        helper="Must submit bar"
-        inputProps={{
-          ...register('foo'),
-          placeholder: 'bar',
-          disabled: isSubmitSuccessful
-        }}
+      <input
+        {...register('foo')}
+        placeholder="bar"
+        disabled={isSubmitSuccessful}
       />
-      <Button
-        type="submit"
-        disabled={!isDirty || isSubmitSuccessful}
-        variant={isSubmitSuccessful ? 'outline' : 'fill'}
-        fullwidth
-      >
+      <button type="submit" disabled={!isDirty || isSubmitSuccessful}>
         {isSubmitSuccessful ? 'Success' : 'Submit'}
-      </Button>
+      </button>
     </form>
   )
 }
