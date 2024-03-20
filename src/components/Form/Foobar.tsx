@@ -14,7 +14,7 @@ import {
 import { Input } from '../ui/input'
 
 const FormSchema = z.object({
-  foo: z.literal('bar')
+  foo: z.union([z.literal('bar'), z.literal('')])
 })
 
 type TFormSchema = z.infer<typeof FormSchema>
@@ -43,7 +43,7 @@ export default function FoobarForm() {
               <FormControl>
                 <Input placeholder="bar" {...field} />
               </FormControl>
-              <FormDescription>Hello world!</FormDescription>
+              <FormDescription>Type bar.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
