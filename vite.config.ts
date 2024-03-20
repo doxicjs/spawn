@@ -1,22 +1,26 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import { resolve } from "path";
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
+
+// Plugins
+import react from '@vitejs/plugin-react-swc'
+import eslintPlugin from 'vite-plugin-eslint'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [react()],
-	server: {
-		port: 4000,
-	},
-	resolve: {
-		alias: {
-			// FOR EASY IMPORTS
-			layouts: resolve(__dirname, "./src/layouts"),
-			components: resolve(__dirname, "./src/components"),
-			pages: resolve(__dirname, "./src/pages"),
-			shared: resolve(__dirname, "./src/shared"),
-			lib: resolve(__dirname, "./src/lib"),
-			src: resolve(__dirname, "./src"),
-		},
-	},
-});
+  plugins: [
+    react(),
+    eslintPlugin({
+      cache: false,
+      include: ['./src/**/*.ts', './src/**/*.tsx'],
+      exclude: []
+    })
+  ],
+  server: {
+    port: 4000
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src')
+    }
+  }
+})
