@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '../ui/button'
 import {
@@ -12,12 +12,7 @@ import {
   FormMessage
 } from '@/components/ui/form'
 import { Input } from '../ui/input'
-
-const FormSchema = z.object({
-  foo: z.union([z.literal('bar'), z.literal('')])
-})
-
-type TFormSchema = z.infer<typeof FormSchema>
+import { FormSchema, type TFormSchema } from '@/shared/schemas/example'
 
 export default function FoobarForm() {
   const form = useForm<TFormSchema>({
