@@ -1,3 +1,5 @@
+import twAnimatePlugin from 'tailwindcss-animate'
+import twTypographyPlugin from '@tailwindcss/typography'
 import type { Config } from 'tailwindcss'
 
 const config = {
@@ -104,7 +106,7 @@ const config = {
       }
     }
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')]
+  plugins: [twAnimatePlugin, twTypographyPlugin]
 } satisfies Config
 
 export default config
