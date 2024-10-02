@@ -14,7 +14,7 @@
     "lint": "eslint --fix .",
     "prettier": "prettier --write .",
     "format": "eslint --fix && prettier --write .",
-    "ui:add": "npx shadcn-ui@latest add",
+    "ui:add": "pnpm dlx shadcn@latest add",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
