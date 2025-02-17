@@ -27,7 +27,7 @@ export default function FoobarForm() {
         onSubmit={form.handleSubmit((data) => {
           console.log(data)
         })}
-        className="space-y-8"
+        className="w-full max-w-xs space-y-8"
       >
         <FormField
           control={form.control}

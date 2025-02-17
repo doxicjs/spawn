@@ -3,12 +3,14 @@ import { defineConfig } from 'vite'
 
 // Plugins
 import react from '@vitejs/plugin-react-swc'
+import tailwindcss from '@tailwindcss/vite'
 // import eslintPlugin from 'vite-plugin-eslint'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react()
+    react(),
+    tailwindcss()
     // eslintPlugin({
     //   cache: false,
     //   include: ['./src/**/*.ts', './src/**/*.tsx'],
