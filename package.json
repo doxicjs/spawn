@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "author": "thejskhan",
+  "author": "2khan",
   "license": "ISC",
   "scripts": {
     "prepare": "husky",
